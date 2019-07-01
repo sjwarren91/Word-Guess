@@ -7,12 +7,12 @@ var currentWord = [];
 var answerArray = [];
 var guessArray = [];
 var score = 0;
-var guessLeft = 14;
+var guessLeft = 11;
 
 function newGame() {
     answerArray = [];
     guessArray = [];
-    guessLeft = 14;
+    guessLeft = 11;
     guessTrack.innerHTML = "Guesses remaining: " + guessLeft;
     guessField.innerHTML = "";
     currentWord = wordArray[Math.floor(Math.random() * wordArray.length)];
