@@ -1,6 +1,7 @@
 var wordArray = ["pumpkin", "horse", "engineering"];
 var wordField = document.getElementById("word");
 var guessField = document.getElementById("guesses");
+var guessTrack = document.getElementById("guess-track");
 var newGameButton = document.getElementById("new-game-button");
 var currentWord = [];
 var answerArray = [];
@@ -8,14 +9,12 @@ var guessArray = [];
 var score = 0;
 var guessLeft = 14;
 
-// console.log(currentWord);
-// console.log(currentWord.length);
-
-
 function newGame() {
     answerArray = [];
     guessArray = [];
     guessLeft = 14;
+    guessTrack.innerHTML = "Guesses remaining: " + guessLeft;
+    guessField.innerHTML = "";
     currentWord = wordArray[Math.floor(Math.random() * wordArray.length)];
     for (let i = 0; i < currentWord.length; i++) {
         answerArray.push("_");
@@ -32,10 +31,20 @@ function arrayPrint(array, id) {
     }
 }
 
+function checkEndOfGame() {
+    if (answerArray.join("") == currentWord){
+        alert("You Win!");
+    } else if (guessLeft === 0){
+        alert('You Lose!')
+    }
+}
+
 newGameButton.addEventListener("click", function() {
     wordField.innerHTML = "";
     newGame();
 });
+
+
 
 
 document.onkeyup = function(event) {
@@ -61,5 +70,6 @@ document.onkeyup = function(event) {
 
     arrayPrint(answerArray, wordField);
     arrayPrint(guessArray, guessField);
-
+    guessTrack.innerHTML = "Guesses remaining: " + guessLeft;
+    checkEndOfGame();
 };
