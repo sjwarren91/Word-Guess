@@ -1,0 +1,17 @@
+body {
+    position: relative;
+}
+
+
+.start-screen {
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.play-screen {
+    visibility: hidden;
+}
