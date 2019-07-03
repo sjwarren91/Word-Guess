@@ -17,15 +17,17 @@ body {
     padding: 50px;
     transform: translate(-50%, -50%);
     background-color: rgb(59, 59, 59);
+    border-radius: 4px;
+    background-image: url("../images/sign-background.jpg");
+    opacity: 0;
     animation-name: blow-up;
     animation-duration: 0.75s;
     animation-delay: 0.5s;
-    border-radius: 4px;
-    
+    animation-fill-mode: both;
 }
 
 .sign b {
-    font: 100 15vh 'Pacifico', cursive;
+    font: 100 15vh 'Vibur', cursive;
     color: #fee;
     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444,
         0 0 0.1em #ff4444, 0 10px 3px #000;
@@ -33,6 +35,18 @@ body {
 
 .sign b span{
     animation: flash linear infinite 2s;
+}
+
+.start {
+    margin-top: 40px;
+    padding: 7px 20px;
+    border-radius: 10px;
+    text-shadow: -1px -1px 1px rgba(0,0,0,0.8);
+    color: white;
+	border: 5px solid transparent;
+	border-bottom-color: rgba(0,0,0,0.35);
+	background: rgba(0, 238, 255, 0.932);
+	cursor: pointer;
 }
 
 .play-screen {
@@ -46,12 +60,13 @@ body {
     }
 
     50% {
-        transform: translate(-50%, -50%) scale(1.5);
-        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.25);
+        opacity: 0.75;
     }
 
     100% {
         transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
     }
 }
 
