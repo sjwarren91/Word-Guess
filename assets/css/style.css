@@ -29,8 +29,8 @@ body {
 #sign b {
     font: 100 15vh 'Vibur', cursive;
     color: #fee;
-    text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #7FCDED, 0 0 0.5em #7FCDED,
-        0 0 0.1em #7FCDED, 0 10px 3px #000;
+    text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #06FFFE, 0 0 0.5em #06FFFE,
+        0 0 0.1em #06FFFE, 0 10px 3px #000;
 }
 
 #sign b span{
@@ -79,6 +79,10 @@ body {
     width: 320px;;
     color: white;
     background-color: #501E59; 
+}
+
+.canvas {
+    background-color: #501E59;
 }
 
 /* #lets-play {
