@@ -16,21 +16,21 @@ function newGame() {
     answerArray = [];
     guessArray = [];
     guessLeft = 11;
-    guessTrack.innerHTML = "Guesses remaining: " + guessLeft;
-    guessField.innerHTML = "";
+    guessTrack.textContent = "Guesses remaining: " + guessLeft;
+    guessField.textContent = "";
     currentWord = wordArray[Math.floor(Math.random() * wordArray.length)];
     for (let i = 0; i < currentWord.length; i++) {
         answerArray.push("_");
     }
     for (let i = 0; i < answerArray.length; i++) {
-        wordField.innerHTML += answerArray[i] + " ";
+        wordField.textContent += answerArray[i] + " ";
     }
 }
 
 function arrayPrint(array, id) {
-    id.innerHTML = "";
+    id.textContent = "";
     for (let i = 0; i < array.length; i++) {
-        id.innerHTML += array[i] + " ";
+        id.textContent += array[i] + " ";
     }
 }
 
@@ -43,14 +43,15 @@ function checkEndOfGame() {
 }
 
 newGameButton.addEventListener("click", function() {
-    wordField.innerHTML = "";
+    wordField.textContent = "";
     newGame();
 });
 
 startButton.addEventListener("click", function(){
     startScreen.style.visibility = "hidden";
+    playScreen.style.visibility = "visible";
+    newGame();
 });
-
 
 
 
@@ -77,6 +78,6 @@ document.onkeyup = function(event) {
 
     arrayPrint(answerArray, wordField);
     arrayPrint(guessArray, guessField);
-    guessTrack.innerHTML = "Guesses remaining: " + guessLeft;
+    guessTrack.textContent = "Guesses remaining: " + guessLeft;
     checkEndOfGame();
 };
