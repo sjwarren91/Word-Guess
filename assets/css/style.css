@@ -33,8 +33,12 @@ body {
         0 0 0.1em #06FFFE, 0 10px 3px #000;
 }
 
-#sign b span{
+#sign b span {
     animation: flash linear infinite 2s;
+}
+
+#sign b #span1 {
+    animation: flash linear infinite 3.5s;
 }
 
 #start-button {
