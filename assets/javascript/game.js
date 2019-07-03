@@ -3,6 +3,9 @@ var wordField = document.getElementById("word");
 var guessField = document.getElementById("guesses");
 var guessTrack = document.getElementById("guess-track");
 var newGameButton = document.getElementById("new-game-button");
+var startButton = document.getElementById("start-button");
+var playScreen = document.getElementById("play-screen");
+var startScreen = document.getElementById("start-screen");
 var currentWord = [];
 var answerArray = [];
 var guessArray = [];
@@ -42,6 +45,10 @@ function checkEndOfGame() {
 newGameButton.addEventListener("click", function() {
     wordField.innerHTML = "";
     newGame();
+});
+
+startButton.addEventListener("click", function(){
+    startScreen.style.visibility = "hidden";
 });
 
 
