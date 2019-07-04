@@ -50,10 +50,12 @@ newGameButton.addEventListener("click", function() {
 startButton.addEventListener("click", function(){
     startScreen.style.visibility = "hidden";
     playScreen.style.visibility = "visible";
+    playScreen.style.animationName = "slide";
+    playScreen.style.animationDuration = "0.75s";
+    playScreen.style.animationDelay = "0.25s";
+    playScreen.style.animationFillMode = "both";
     newGame();
 });
-
-
 
 document.onkeyup = function(event) {
 
