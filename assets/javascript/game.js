@@ -5,12 +5,14 @@ var guessTrack = document.getElementById("guess-track");
 var startButton = document.getElementById("start-button");
 var playScreen = document.getElementById("play-screen");
 var startScreen = document.getElementById("start-screen");
+var winLoss = document.getElementById("win-loss");
 var sign2 = document.getElementsByClassName("sign-2");
 var gameArea = document.getElementsByClassName("game-area");
 var gameResults = document.getElementsByClassName("game-results");
 
 var currentWord, answerArray, guessArray, guessLeft;
-var wins, losses = 0;
+var wins = 0;
+var losses = 0;
 var alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
 
 function newGame() {
@@ -20,6 +22,7 @@ function newGame() {
     guessLeft = 11;
     guessTrack.textContent = "Guesses remaining: " + guessLeft;
     guessField.textContent = "";
+    wordField.textContent = "";
     currentWord = wordArray[Math.floor(Math.random() * wordArray.length)];
     for (let i = 0; i < currentWord.length; i++) {
         answerArray.push("_");
@@ -36,11 +39,19 @@ function arrayPrint(array, id) {
     }
 }
 
+function updateScore(){
+    winLoss.textContent = "W - " + wins + "/ L - " + losses;
+}
+
 function checkEndOfGame() {
     if (answerArray.join("") == currentWord){
-        alert("You Win!");
+        wins += 1;
+        updateScore();
+        newGame();
     } else if (guessLeft === 0){
-        alert('You Lose!')
+        losses += 1;
+        updateScore();
+        newGame();
     }
 }
 
