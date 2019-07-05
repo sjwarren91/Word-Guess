@@ -17,7 +17,7 @@ function newGame() {
     guessArray = [];
     guessLeft = 11;
     guessTrack.textContent = "Guesses remaining: " + guessLeft;
-    guessField.textContent = "";
+    guessField.textContent = " ";
     currentWord = wordArray[Math.floor(Math.random() * wordArray.length)];
     for (let i = 0; i < currentWord.length; i++) {
         answerArray.push("_");
