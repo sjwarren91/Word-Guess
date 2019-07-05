@@ -103,7 +103,12 @@ h2 {
 
 h3 {
     font-size: 25px;
-    margin-bottom: 0;
+    margin: 0;
+    padding: 20px 0px 20px 0px;
+}
+
+#guesses {
+    height: 20px;
 }
 
 @keyframes blow-up {
