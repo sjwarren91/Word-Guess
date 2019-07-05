@@ -82,7 +82,7 @@ body {
     width: 320px;
     color: white;
     background-color: #501E59;
-    border: 2px solid #06FFFE;
+    border: 2px dashed #06FFFE;
     padding: 20px; 
     display: flex;
     flex-direction: column;
@@ -91,6 +91,8 @@ body {
 .canvas {
     background-color: #501E59;
     display: flex;
+    padding: 0px 25px 0px 25px;
+    border: 2px dashed #06FFFE;
 }
 
 h2 {
