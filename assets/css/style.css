@@ -6,6 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100%;
     margin: 0;
     background-image: linear-gradient(to right, black, #030f1d, black);
@@ -25,19 +26,24 @@ body {
     animation-fill-mode: both;
 }
 
-#sign b {
+.sign b {
     font: 100 15vh 'Vibur', cursive;
     color: #fee;
     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #06FFFE, 0 0 0.5em #06FFFE,
         0 0 0.1em #06FFFE, 0 10px 3px #000;
 }
 
-#sign b span {
+.sign b span {
     animation: flash linear infinite 2s;
 }
 
-#sign b #span1 {
+.sign b #span1 {
     animation: flash linear infinite 3.5s;
+}
+
+.sign-2 {
+    visibility: hidden;
+    margin-bottom: 50px;
 }
 
 #start-button {
@@ -49,7 +55,6 @@ body {
     color: grey;
 	border: 5px solid transparent;
 	border-bottom-color: rgba(0,0,0,0.35);
-    /* background: rgba(0, 238, 255, 0.932); */
     background: white;
 	cursor: pointer;
 }
@@ -57,28 +62,20 @@ body {
 #play-screen {
     visibility: hidden;
     background-color: grey;
-    text-align: center;
     display: flex;
+    justify-content: space-between;
+    align-items: center; 
     padding: 50px;
-    padding-top: 0px;
     width: 852px;
     height: 480px;
-    justify-content: center;
-    align-items: center;
     background-image: url("../images/829733.png");
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    
 }
 
 .game-area {
     float: left;
-}
-
-#play-area {
-    display: flex;
-    justify-content: space-between;
 }
 
 .game-results {
@@ -102,15 +99,6 @@ h2 {
     margin-top: 0;
     margin-bottom: 20px;
 }
-
-/* #lets-play {
-    position: absolute;
-    top: 40%;
-    left: 80%;
-    transform: rotate(-25deg);
-    color: #01D5F9;
-} */
-
 
 @keyframes blow-up {
     0% {

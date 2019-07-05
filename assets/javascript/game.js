@@ -6,6 +6,10 @@ var newGameButton = document.getElementById("new-game-button");
 var startButton = document.getElementById("start-button");
 var playScreen = document.getElementById("play-screen");
 var startScreen = document.getElementById("start-screen");
+var sign2 = document.getElementsByClassName("sign-2");
+var gameArea = document.getElementsByClassName("game-area");
+var gameResults = document.getElementsByClassName("game-results");
+
 var currentWord = [];
 var answerArray = [];
 var guessArray = [];
@@ -50,10 +54,20 @@ newGameButton.addEventListener("click", function() {
 startButton.addEventListener("click", function(){
     startScreen.style.visibility = "hidden";
     playScreen.style.visibility = "visible";
+    sign2[0].style.visibility = "visible";
     playScreen.style.animationName = "slide";
     playScreen.style.animationDuration = "0.75s";
     playScreen.style.animationDelay = "0.25s";
     playScreen.style.animationFillMode = "both";
+    gameArea[0].style.animationName = "slide";
+    gameArea[0].style.animationDuration = "0.75s";
+    gameArea[0].style.animationDelay = "1s";
+    gameArea[0].style.animationFillMode = "both";
+    gameResults[0].style.animationName = "slide";
+    gameResults[0].style.animationDuration = "0.75s";
+    gameResults[0].style.animationDelay = "1.75s";
+    gameResults[0].style.animationFillMode = "both";
+    
     newGame();
 });
 
