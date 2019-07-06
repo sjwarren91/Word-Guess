@@ -6,7 +6,7 @@ Hangman is a guessing game for two or more players, in this case you and the com
 
 The word in question will be represented by a series of dashes like so.
 
-_ _ _ _ _ _ _
+'_ _ _ _ _ _ _
 
 The number of dashes represents the number of letters in the word.
 
