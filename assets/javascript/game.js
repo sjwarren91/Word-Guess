@@ -92,9 +92,12 @@ function animate(target, delay) {
 
 function animateWinLoss(string){
     popUp.textContent = string.toUpperCase() + "!"
-    popUp.style.animationName = "winloss";
-    popUp.style.animationDuration = "5s";
-    popUp.style.animationFillMode = "both";
+    popUp.classList.add('dopopup');
+    setTimeout(function() {
+    popUp.textContent = "";
+    popUp.classList.remove('dopopup');
+    }, 5000);
+    
 }
 
 function clearCanvas(){
