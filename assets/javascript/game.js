@@ -192,7 +192,7 @@ function playLossSound(){
     }
 }
 
-body.addEventListener("load", start());
+body.addEventListener("canplay", start());
 
 startButton.addEventListener("click", function() {
     audioElement = document.createElement("audio");
