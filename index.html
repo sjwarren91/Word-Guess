@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+ <!--initial start screen-->
     <div id="start-screen">
         <div class="sign">
             <b>Ha<span>ng</span>m<span id="span1">a</span>n</b>
@@ -20,22 +20,18 @@
 
         <button id="start-button">Start Game</button>
     </div>
-
+    <!--main play screen-->
     <div class="sign sign-2">
         <b>Ha<span>ng</span>m<span id="span1">a</span>n</b>
     </div>
     <div id="play-screen">
-
-        <!-- <div id="lets-play">
-            <span>Let's Play</span>
-        </div> -->
-
         <div class="game-area">
-            <canvas class="canvas" width="250" height="180">
-
-            </canvas>
+            <!--area for drawing lines-->
+            <canvas class="canvas" width="250" height="180"></canvas>
         </div>
+        <!--area for win/lose message-->
         <p id="popup"></p>
+        <!--main game content-->
         <div class="game-results">
             <h2>Guess the Word!</h2>
             <p id="word" style="text-align: center;"></p>

@@ -1,3 +1,4 @@
+// a lot of variables
 var wordArray = ['cable','quiet','slant','wave','technique','play','gown','training','prescription','flawed','cruelty','pass','density','sandwich','context','petty','combination','ring','laundry','cast','origin','jurisdiction','horse','confrontation','society','golf','unrest','reform','rugby','dragon','snarl','strikebreaker','destruction','rule','conglomerate','adoption','verdict','pack','sphere','exchange','trustee','development','beat','priority','deport','finished','presentation','restoration','justice','resource','earthwax','dictionary','fur','license','railcar','royalty','slogan','progressive','raise','advertising','prey','pan','sensation','arrest','impulse','kitchen','bottom','egg white','automatic','cell','piece','dance','rotten','rung','frog','memory','address','lung','orbit','wire','healthy','pudding','honor','turn','privacy','threshold','work out','eye','maid','wild','assertive','minister','trouble','district','blonde','hold','cook','white','painter','grain'];
 var wordField = document.getElementById("word");
 var guessField = document.getElementById("guesses");
@@ -13,6 +14,11 @@ var gameArea = document.getElementsByClassName("game-area");
 var gameResults = document.getElementsByClassName("game-results");
 var easel = document.getElementsByClassName("canvas");
 var context = easel[0].getContext("2d");
+var audioElement = document.createElement("audio");
+    audioElement.setAttribute(
+        "src",
+        "assets/images/LIFELIKE - Miami Nice (Part I).mp3"
+    );
 var audioElement2 = document.createElement("audio");
 audioElement2.setAttribute(
     "src",
@@ -30,6 +36,7 @@ var losses = 0;
 var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 var context;
 
+//start function to apply the start screen animation
 function start(){
     startScreen.style.animationName= "blow-up";
     startScreen.style.animationDuration = "0.75s";
@@ -37,6 +44,7 @@ function start(){
     startScreen.style.animationFillMode = "both";
 }
 
+//new game function to initialize all values on startup
 function newGame() {
     currentWord = [];
     answerArray = [];
@@ -54,6 +62,7 @@ function newGame() {
     }
 }
 
+//function for printing guesses and current word to screen
 function arrayPrint(array, id) {
     id.textContent = "";
     for (let i = 0; i < array.length; i++) {
@@ -61,10 +70,12 @@ function arrayPrint(array, id) {
     }
 }
 
+//function to update win/loss score after game win/loss
 function updateScore() {
     winLoss.textContent = "W - " + wins + "/ L - " + losses;
 }
 
+//function to see if word has been guessed or if lives are gone
 function checkEndOfGame() {
     if (answerArray.join("") == currentWord) {
         wins += 1;
@@ -83,6 +94,7 @@ function checkEndOfGame() {
     }
 }
 
+//function to animate slide in of game canvas/content
 function animate(target, delay) {
     target.style.animationName = "slide";
     target.style.animationDuration = "0.75s";
@@ -90,6 +102,7 @@ function animate(target, delay) {
     target.style.animationFillMode = "both";
 }
 
+//function to animate the win/loss popup
 function animateWinLoss(string){
     popUp.textContent = string.toUpperCase() + "!"
     popUp.classList.add('dopopup');
@@ -100,14 +113,17 @@ function animateWinLoss(string){
     
 }
 
+//function to clear the canvas on game win and loss
 function clearCanvas(){
     context.clearRect(0,0,250,180);
 }
 
+//function to draw relevant hangman line based on lives left
 function canvasDraw(num) {
     drawArray[num]();
 };
 
+//function to draw line to canvas, takes x1-x2 and y1-y2 coordinates as inputs
 function draw(w, x, y, z) {
     context.beginPath();
     context.lineWidth = "2";
@@ -117,6 +133,7 @@ function draw(w, x, y, z) {
     context.stroke();
 };
 
+//the next 11 functions are the specific lines of the hangman image
 function first() {
     draw(5, 150, 150, 150);
 };
@@ -163,6 +180,7 @@ function lLeg() {
     draw(60, 70, 50, 110);
 };
 
+//stored the above functions in an array to call them easier in canvasDraw function
 drawArray = [
     lLeg,
     rLeg,
@@ -177,6 +195,7 @@ drawArray = [
     first
 ];
 
+//function to play the win sound on a win
 function playWinSound(){
     audioElement.volume = "0.05";
     audioElement2.volume = "0.3";
@@ -186,6 +205,7 @@ function playWinSound(){
     }
 }
 
+//function to play a loss sound on a loss
 function playLossSound(){
     audioElement.volume = "0.05";
     audioElement3.volume = "0.7";
@@ -195,14 +215,13 @@ function playLossSound(){
     }
 }
 
+//not sure if this works, supposed to wait until large
+//audio file that plays in the background can be played
 body.addEventListener("canplay", start());
 
+//event listener for start screen start button
+//starts background music and animates play screen
 startButton.addEventListener("click", function() {
-    audioElement = document.createElement("audio");
-    audioElement.setAttribute(
-        "src",
-        "assets/images/LIFELIKE - Miami Nice (Part I).mp3"
-    );
     audioElement.volume = "0.2";
     audioElement.play();
     audioElement.loop = true;
@@ -215,10 +234,11 @@ startButton.addEventListener("click", function() {
     newGame();
 });
 
+//key press event listener and main game logic
 document.onkeyup = function(event) {
     var keyPress = event.key.toLowerCase();
-    if (alphabet.indexOf(keyPress) === -1) {
-    } else if (
+    if (alphabet.indexOf(keyPress) === -1) { //checks if keypress is in alphabet
+    } else if (                              //does nothing if not           
         guessArray.indexOf(keyPress) === -1 &&
         currentWord.indexOf(keyPress) >= 0
     ) {
@@ -230,15 +250,11 @@ document.onkeyup = function(event) {
         guessLeft -= 1;
         canvasDraw(guessLeft);
         guessArray.push(keyPress);
-        console.log(guessLeft);
     }
-
-    console.log(guessArray);
 
     for (let i = 0; i < currentWord.length; i++) {
         if (keyPress === currentWord[i]) {
             answerArray[i] = keyPress;
-            console.log(answerArray);
         }
     }
 
