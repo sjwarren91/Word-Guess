@@ -72,6 +72,7 @@ function checkEndOfGame() {
         newGame();
         clearCanvas();
         playWinSound();
+        animateWinLoss("winner");
     } else if (guessLeft === 0) {
         losses += 1;
         updateScore();
