@@ -20,6 +20,7 @@ body {
     border-radius: 4px;
     background-image: url("../images/sign-background.jpg");
     opacity: 0;
+    height: 33%;
 }
 
 .sign b {
@@ -52,7 +53,17 @@ body {
 	border: 5px solid transparent;
 	border-bottom-color: rgba(0,0,0,0.35);
     background: white;
-	cursor: pointer;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#start-button:active{
+    margin-top: 45px;
+    border-bottom-width: 0;
+}
+
+#start-button:hover{
+    background: rgb(226, 223, 223)
 }
 
 #play-screen {
