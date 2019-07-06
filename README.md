@@ -1,7 +1,7 @@
 # Word-Guess (a.k.a Hangman)
 Making a basic game of Hangman in the browser using JS/HTML and CSS.
 
-##How to Play
+## How to Play
 Hangman is a guessing game for two or more players, in this case you and the computer. The computer will generate a random word and it is your objective to try and guess the word by suggesting letters, in this case by pressing them on your keyboard.
 
 The word in question will be represented by a series of dashes like so.
