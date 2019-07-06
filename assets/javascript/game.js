@@ -7,6 +7,7 @@ var playScreen = document.getElementById("play-screen");
 var startScreen = document.getElementById("start-screen");
 var body = document.getElementsByTagName("body")[0];
 var winLoss = document.getElementById("win-loss");
+var popUp = document.getElementById("popup");
 var sign2 = document.getElementsByClassName("sign-2");
 var gameArea = document.getElementsByClassName("game-area");
 var gameResults = document.getElementsByClassName("game-results");
@@ -16,6 +17,11 @@ var audioElement2 = document.createElement("audio");
 audioElement2.setAttribute(
     "src",
     "assets/images/Cheering-Sound.mp3"
+);
+var audioElement3 = document.createElement("audio");
+audioElement3.setAttribute(
+    "src",
+    "assets/images/Losing-Sound.mp3"
 );
 
 var currentWord, answerArray, guessArray, guessLeft, drawArray, audioElement;
@@ -71,6 +77,8 @@ function checkEndOfGame() {
         updateScore();
         newGame();
         clearCanvas();
+        playLossSound();
+        animateWinLoss("loser");
     }
 }
 
@@ -79,6 +87,13 @@ function animate(target, delay) {
     target.style.animationDuration = "0.75s";
     target.style.animationDelay = delay;
     target.style.animationFillMode = "both";
+}
+
+function animateWinLoss(string){
+    popUp.textContent = string.toUpperCase() + "!"
+    popUp.style.animationName = "winloss";
+    popUp.style.animationDuration = "5s";
+    popUp.style.animationFillMode = "both";
 }
 
 function clearCanvas(){
@@ -124,7 +139,7 @@ function head() {
     context.stroke();
 };
 
-function body() {
+function torso() {
     draw(60, 36, 60, 70);
 };
 
@@ -149,7 +164,7 @@ drawArray = [
     rLeg,
     lArm,
     rArm,
-    body,
+    torso,
     head,
     fourth,
     brace,
@@ -159,11 +174,21 @@ drawArray = [
 ];
 
 function playWinSound(){
-    audioElement.volume = "0.1";
-    audioElement2.volume = "0.5";
+    audioElement.volume = "0.05";
+    audioElement2.volume = "0.3";
     audioElement2.play();
+    audioElement2.onended = function(){
     audioElement.volume = "0.2";
-    
+    }
+}
+
+function playLossSound(){
+    audioElement.volume = "0.05";
+    audioElement3.volume = "0.7";
+    audioElement3.play();
+    audioElement3.onended = function(){
+        audioElement.volume = "0.2";
+    }
 }
 
 body.addEventListener("load", start());
