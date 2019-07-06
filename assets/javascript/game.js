@@ -1,5 +1,106 @@
 // a lot of variables
-var wordArray = ['cable','quiet','slant','wave','technique','play','gown','training','prescription','flawed','cruelty','pass','density','sandwich','context','petty','combination','ring','laundry','cast','origin','jurisdiction','horse','confrontation','society','golf','unrest','reform','rugby','dragon','snarl','strikebreaker','destruction','rule','conglomerate','adoption','verdict','pack','sphere','exchange','trustee','development','beat','priority','deport','finished','presentation','restoration','justice','resource','earthwax','dictionary','fur','license','railcar','royalty','slogan','progressive','raise','advertising','prey','pan','sensation','arrest','impulse','kitchen','bottom','egg white','automatic','cell','piece','dance','rotten','rung','frog','memory','address','lung','orbit','wire','healthy','pudding','honor','turn','privacy','threshold','work out','eye','maid','wild','assertive','minister','trouble','district','blonde','hold','cook','white','painter','grain'];
+var wordArray = [
+    "cable",
+    "quiet",
+    "slant",
+    "wave",
+    "technique",
+    "play",
+    "gown",
+    "training",
+    "prescription",
+    "flawed",
+    "cruelty",
+    "pass",
+    "density",
+    "sandwich",
+    "context",
+    "petty",
+    "combination",
+    "ring",
+    "laundry",
+    "cast",
+    "origin",
+    "jurisdiction",
+    "horse",
+    "confrontation",
+    "society",
+    "golf",
+    "unrest",
+    "reform",
+    "rugby",
+    "dragon",
+    "snarl",
+    "strikebreaker",
+    "destruction",
+    "rule",
+    "conglomerate",
+    "adoption",
+    "verdict",
+    "pack",
+    "sphere",
+    "exchange",
+    "trustee",
+    "development",
+    "beat",
+    "priority",
+    "deport",
+    "finished",
+    "presentation",
+    "restoration",
+    "justice",
+    "resource",
+    "earthwax",
+    "dictionary",
+    "fur",
+    "license",
+    "railcar",
+    "royalty",
+    "slogan",
+    "progressive",
+    "raise",
+    "advertising",
+    "prey",
+    "pan",
+    "sensation",
+    "arrest",
+    "impulse",
+    "kitchen",
+    "bottom",
+    "egg white",
+    "automatic",
+    "cell",
+    "piece",
+    "dance",
+    "rotten",
+    "rung",
+    "frog",
+    "memory",
+    "address",
+    "lung",
+    "orbit",
+    "wire",
+    "healthy",
+    "pudding",
+    "honor",
+    "turn",
+    "privacy",
+    "threshold",
+    "work out",
+    "eye",
+    "maid",
+    "wild",
+    "assertive",
+    "minister",
+    "trouble",
+    "district",
+    "blonde",
+    "hold",
+    "cook",
+    "white",
+    "painter",
+    "grain"
+];
 var wordField = document.getElementById("word");
 var guessField = document.getElementById("guesses");
 var guessTrack = document.getElementById("guess-track");
@@ -15,20 +116,14 @@ var gameResults = document.getElementsByClassName("game-results");
 var easel = document.getElementsByClassName("canvas");
 var context = easel[0].getContext("2d");
 var audioElement = document.createElement("audio");
-    audioElement.setAttribute(
-        "src",
-        "assets/images/LIFELIKE - Miami Nice (Part I).mp3"
-    );
+audioElement.setAttribute(
+    "src",
+    "assets/images/LIFELIKE - Miami Nice (Part I).mp3"
+);
 var audioElement2 = document.createElement("audio");
-audioElement2.setAttribute(
-    "src",
-    "assets/images/Cheering-Sound.mp3"
-);
+audioElement2.setAttribute("src", "assets/images/Cheering-Sound.mp3");
 var audioElement3 = document.createElement("audio");
-audioElement3.setAttribute(
-    "src",
-    "assets/images/Losing-Sound.mp3"
-);
+audioElement3.setAttribute("src", "assets/images/Losing-Sound.mp3");
 
 var currentWord, answerArray, guessArray, guessLeft, drawArray, audioElement;
 var wins = 0;
@@ -37,8 +132,8 @@ var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 var context;
 
 //start function to apply the start screen animation
-function start(){
-    startScreen.style.animationName= "blow-up";
+function start() {
+    startScreen.style.animationName = "blow-up";
     startScreen.style.animationDuration = "0.75s";
     startScreen.style.animationDelay = "0.5s";
     startScreen.style.animationFillMode = "both";
@@ -46,20 +141,22 @@ function start(){
 
 //new game function to initialize all values on startup
 function newGame() {
-    currentWord = [];
-    answerArray = [];
-    guessArray = [];
-    guessLeft = 11;
-    guessTrack.textContent = "Guesses remaining: " + guessLeft;
-    guessField.textContent = "";
-    wordField.textContent = "";
-    currentWord = wordArray[Math.floor(Math.random() * wordArray.length)];
-    for (let i = 0; i < currentWord.length; i++) {
-        answerArray.push("_");
-    }
-    for (let i = 0; i < answerArray.length; i++) {
-        wordField.textContent += answerArray[i] + " ";
-    }
+    setTimeout(function() {
+        currentWord = [];
+        answerArray = [];
+        guessArray = [];
+        guessLeft = 11;
+        guessTrack.textContent = "Guesses remaining: " + guessLeft;
+        guessField.textContent = "";
+        wordField.textContent = "";
+        currentWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+        for (let i = 0; i < currentWord.length; i++) {
+            answerArray.push("_");
+        }
+        for (let i = 0; i < answerArray.length; i++) {
+            wordField.textContent += answerArray[i] + " ";
+        }
+    }, 2000);
 }
 
 //function for printing guesses and current word to screen
@@ -103,25 +200,26 @@ function animate(target, delay) {
 }
 
 //function to animate the win/loss popup
-function animateWinLoss(string){
-    popUp.textContent = string.toUpperCase() + "!"
-    popUp.classList.add('dopopup');
+function animateWinLoss(string) {
+    popUp.textContent = string.toUpperCase() + "!";
+    popUp.classList.add("dopopup");
     setTimeout(function() {
-    popUp.textContent = "";
-    popUp.classList.remove('dopopup');
+        popUp.textContent = "";
+        popUp.classList.remove("dopopup");
     }, 5000);
-    
 }
 
 //function to clear the canvas on game win and loss
-function clearCanvas(){
-    context.clearRect(0,0,250,180);
+function clearCanvas() {
+    setTimeout(function() {
+        context.clearRect(0, 0, 250, 180);
+    }, 2000);
 }
 
 //function to draw relevant hangman line based on lives left
 function canvasDraw(num) {
     drawArray[num]();
-};
+}
 
 //function to draw line to canvas, takes x1-x2 and y1-y2 coordinates as inputs
 function draw(w, x, y, z) {
@@ -131,54 +229,54 @@ function draw(w, x, y, z) {
     context.moveTo(w, x);
     context.lineTo(y, z);
     context.stroke();
-};
+}
 
 //the next 11 functions are the specific lines of the hangman image
 function first() {
     draw(5, 150, 150, 150);
-};
+}
 
 function second() {
     draw(10, 5, 10, 150);
-};
+}
 
 function third() {
     draw(5, 5, 70, 5);
-};
+}
 
 function fourth() {
     draw(60, 5, 60, 15);
-};
+}
 
 function brace() {
     draw(10, 25, 30, 5);
-};
+}
 
 function head() {
     context.beginPath();
     context.arc(60, 25, 10, 0, Math.PI * 2, true);
     context.stroke();
-};
+}
 
 function torso() {
     draw(60, 36, 60, 70);
-};
+}
 
 function rArm() {
     draw(60, 46, 80, 70);
-};
+}
 
 function lArm() {
     draw(60, 46, 40, 70);
-};
+}
 
 function rLeg() {
     draw(60, 70, 70, 110);
-};
+}
 
 function lLeg() {
     draw(60, 70, 50, 110);
-};
+}
 
 //stored the above functions in an array to call them easier in canvasDraw function
 drawArray = [
@@ -196,23 +294,23 @@ drawArray = [
 ];
 
 //function to play the win sound on a win
-function playWinSound(){
+function playWinSound() {
     audioElement.volume = "0.05";
     audioElement2.volume = "0.3";
     audioElement2.play();
-    audioElement2.onended = function(){
-    audioElement.volume = "0.2";
-    }
+    audioElement2.onended = function() {
+        audioElement.volume = "0.2";
+    };
 }
 
 //function to play a loss sound on a loss
-function playLossSound(){
+function playLossSound() {
     audioElement.volume = "0.05";
     audioElement3.volume = "0.7";
     audioElement3.play();
-    audioElement3.onended = function(){
+    audioElement3.onended = function() {
         audioElement.volume = "0.2";
-    }
+    };
 }
 
 //not sure if this works, supposed to wait until large
@@ -237,8 +335,10 @@ startButton.addEventListener("click", function() {
 //key press event listener and main game logic
 document.onkeyup = function(event) {
     var keyPress = event.key.toLowerCase();
-    if (alphabet.indexOf(keyPress) === -1) { //checks if keypress is in alphabet
-    } else if (                              //does nothing if not           
+    if (alphabet.indexOf(keyPress) === -1) {
+        //checks if keypress is in alphabet
+    } else if (
+        //does nothing if not
         guessArray.indexOf(keyPress) === -1 &&
         currentWord.indexOf(keyPress) >= 0
     ) {
