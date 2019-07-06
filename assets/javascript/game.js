@@ -11,11 +11,16 @@ var gameArea = document.getElementsByClassName("game-area");
 var gameResults = document.getElementsByClassName("game-results");
 var easel = document.getElementsByClassName("canvas");
 var context = easel[0].getContext("2d");
-var currentWord, answerArray, guessArray, guessLeft, drawArray;
+var audioElement2 = document.createcreateElement("audio");
+audioElement2.setAttribute(
+    "src",
+    "assets/images/Cheering-Sound.mp3"
+);
+
+var currentWord, answerArray, guessArray, guessLeft, drawArray, audioElement;
 var wins = 0;
 var losses = 0;
 var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-var audioElement;
 var context;
 
 function newGame() {
@@ -52,6 +57,7 @@ function checkEndOfGame() {
         updateScore();
         newGame();
         clearCanvas();
+        playWinSound();
     } else if (guessLeft === 0) {
         losses += 1;
         updateScore();
@@ -143,6 +149,14 @@ drawArray = [
     second,
     first
 ];
+
+function playWinSound(){
+    audioElement.volume = "0.1";
+    audioElement2.volume = "0.5";
+    audioElement2.play();
+    audioElement.volume = "0.2";
+    
+}
 
 startButton.addEventListener("click", function() {
     audioElement = document.createElement("audio");
