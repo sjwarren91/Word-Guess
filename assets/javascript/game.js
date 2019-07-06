@@ -11,7 +11,7 @@ var gameArea = document.getElementsByClassName("game-area");
 var gameResults = document.getElementsByClassName("game-results");
 var easel = document.getElementsByClassName("canvas");
 var context = easel[0].getContext("2d");
-var audioElement2 = document.createcreateElement("audio");
+var audioElement2 = document.createElement("audio");
 audioElement2.setAttribute(
     "src",
     "assets/images/Cheering-Sound.mp3"
