@@ -5,6 +5,7 @@ var guessTrack = document.getElementById("guess-track");
 var startButton = document.getElementById("start-button");
 var playScreen = document.getElementById("play-screen");
 var startScreen = document.getElementById("start-screen");
+var body = document.getElementsByTagName("body")[0];
 var winLoss = document.getElementById("win-loss");
 var sign2 = document.getElementsByClassName("sign-2");
 var gameArea = document.getElementsByClassName("game-area");
@@ -22,6 +23,13 @@ var wins = 0;
 var losses = 0;
 var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 var context;
+
+function start(){
+    startScreen.style.animationName= "blow-up";
+    startScreen.style.animationDuration = "0.75s";
+    startScreen.style.animationDelay = "0.5s";
+    startScreen.style.animationFillMode = "both";
+}
 
 function newGame() {
     currentWord = [];
@@ -157,6 +165,8 @@ function playWinSound(){
     audioElement.volume = "0.2";
     
 }
+
+body.addEventListener("load", start());
 
 startButton.addEventListener("click", function() {
     audioElement = document.createElement("audio");
