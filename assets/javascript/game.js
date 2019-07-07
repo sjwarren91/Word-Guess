@@ -188,6 +188,7 @@ function checkEndOfGame() {
         clearCanvas();
         playLossSound();
         animateWinLoss("loser");
+        guessLeft = 11;
     }
 }
 
